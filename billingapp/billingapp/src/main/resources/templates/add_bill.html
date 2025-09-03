@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <title>Add Bill</title>
+</head>
+<body>
+
+<h2>Create New Bill</h2>
+
+<form th:action="@{/bills/save}" method="post">
+
+  <label>Select Customer:</label>
+  <select name="customerId">
+    <option th:each="c : ${customers}" th:value="${c.id}" th:text="${c.name}"></option>
+  </select>
+
+  <h3>Select Items and Quantity:</h3>
+
+  <div th:if="${#lists.isEmpty(items)}">
+    <p>No items found. Please add some items first.</p>
+  </div>
+
+  <div th:each="item, iterStat : ${items}">
+    <p>
+      <strong th:text="${item.name}">Item Name</strong> -
+      Rs. <span th:text="${item.price}">Item Price</span><br/>
+
+      <label>
+        <input type="checkbox" th:name="'itemIds[' + ${iterStat.index} + ']'" th:value="${item.id}" />
+        Select Item
+      </label>
+
+      <label>
+        Quantity:
+        <input type="number" min="1" value="1"
+               th:name="'quantities[' + ${iterStat.index} + ']'" />
+      </label>
+    </p>
+    <hr/>
+  </div>
+
+  <button type="submit">Create Bill</button>
+</form>
+
+</body>
+</html>
+

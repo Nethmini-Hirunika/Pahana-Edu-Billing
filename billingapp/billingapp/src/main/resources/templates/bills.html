@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>All Bills</title>
+</head>
+<body>
+<h2>Bill List</h2>
+<a href="/bills/new">Add New Bill</a>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Customer</th>
+    <th>Date</th>
+    <th>Total</th>
+  </tr>
+  <tr th:each="bill : ${bills}">
+    <td th:text="${bill.id}">1</td>
+    <td th:text="${bill.customer.name}">John</td>
+    <td th:text="${bill.billDate}">2025-07-28</td>
+    <td th:text="${bill.totalAmount}">1000.0</td>
+  </tr>
+</table>
+</body>
+</html>

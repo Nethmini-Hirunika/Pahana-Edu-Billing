@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #1873b0; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; }
+    </style>
+</head>
+<body>
+<h1>Invoice</h1>
+<p>Bill ID: <span th:text="${bill.id}"></span></p>
+<p>Date: <span th:text="${bill.billDate}"></span></p>
+<p>Customer: <span th:text="${bill.customer.name}"></span></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Unit Price</th>
+        <th>Subtotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${bill.items}">
+        <td th:text="${item.item.name}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.unitPrice}"></td>
+        <td th:text="${item.subtotal}"></td>
+    </tr>
+    </tbody>
+</table>
+<p><strong>Total:</strong> <span th:text="${bill.totalAmount}"></span></p>
+</body>
+</html>
