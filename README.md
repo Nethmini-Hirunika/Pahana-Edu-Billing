@@ -26,3 +26,6 @@ The project leverages GitHub Actions to automate the build, test, and deployment
 - Deployment: GitHub Pages
 - Version Control: Git, Git
 
+About GitHub Pages Deployment
+The frontend of the PahanaEdu Billing System is deployed using GitHub Pages. This service hosts the static website files directly from a GitHub repository, providing a simple and effective way to publish the React-based user interface. The CI/CD workflow automatically builds the frontend and pushes the compiled static assets to a dedicated branch (e.g., gh-pages), which GitHub Pages then serves to the public. This eliminates the need for a separate hosting provider for the frontend and streamlines the deployment process.
+Live deployment via GitHub Pages.
